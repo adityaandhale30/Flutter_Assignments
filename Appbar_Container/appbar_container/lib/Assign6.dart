@@ -25,10 +25,11 @@ class Assign6 extends StatelessWidget {
                 height: 25,
               ),
             
-             Container(
+              Container(
                 height: 200,
                 width: 180,
                 color: const Color.fromARGB(255, 226, 165, 85),
+                alignment: Alignment.center,
               ),
               const SizedBox(
                 height: 25,

@@ -22,7 +22,7 @@ class Assign1 extends StatelessWidget {
           width: 10,
           ),
          Icon(
-          Icons.arrow_back_ios_new
+          Icons.settings
           ),
          SizedBox(
           width: 10,
