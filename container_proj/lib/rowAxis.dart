@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 
-void main()=>runApp(const RowAxis());
+void main() => runApp(const RowAxis());
 
 class RowAxis extends StatelessWidget {
-
   const RowAxis({super.key});
 
   @override
-  Widget build (BuildContext context) {
-
+  Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-      appBar:AppBar(
-        title: const Text(
-          "Row_Start"
-          ),
-          backgroundColor:Colors.lightBlue,
+        appBar: AppBar(
+          title: const Text("Row_Start"),
+          backgroundColor: Colors.lightBlue,
         ),
         body: Row(
           children: [

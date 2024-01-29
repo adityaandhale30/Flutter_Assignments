@@ -1,4 +1,4 @@
-import 'package:container_proj/PortFolio.dart';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'StatefulFlag',
-      home: Portfolio(),
+      home: FlagApp(),
     );
   }
 }
@@ -29,11 +29,11 @@ class _FlagApp extends State<FlagApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 251, 235, 186),
+      backgroundColor: const Color.fromARGB(255, 251, 235, 186),
       appBar: AppBar(
         title: const Text("75th REPUBLIC DAY"),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 158, 202, 239),
+        backgroundColor: const Color.fromARGB(255, 158, 202, 239),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -97,102 +97,3 @@ class _FlagApp extends State<FlagApp> {
     );
   }
 }
-
-
-
-
-/*import 'package:flutter/material.dart';
-
-void main()=>runApp(const RowAxis());
-
-class RowAxis extends StatelessWidget {
-
-  const RowAxis({super.key});
-
-  @override
-  Widget build (BuildContext context) {
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-      appBar:AppBar(
-        title: const Text(
-          "Row_Start"
-          ),
-          backgroundColor:Colors.lightBlue,
-        ),
-        body: Container(
-          height: double.infinity,
-          child: Row(
-          
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Container(
-                height: 120,
-                width: 120,
-                color: Colors.red,
-              ),
-              Container(
-                height: 120,
-                width: 120,
-                color: Colors.lightGreen,
-              ),
-              Container(
-                height: 120,
-                width: 120,
-                color: Colors.lightBlue,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}*/
-/*import 'package:flutter/material.dart';
-//import '';
-
-void main()=> runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-
-  const MyApp({super.key});
-
-  @override 
-
-  Widget build(BuildContext context) {
-
-    return  MaterialApp(
-
-        debugShowCheckedModeBanner: false,
-        home:Scaffold(
-            appBar: AppBar(
-              title: const Text(
-                "Center Title"
-                ),
-              backgroundColor: const Color.fromARGB(249, 87, 229, 237),
-
-            ),
-
-            body: const Center(
-              
-              child:Text(
-                "Center Demo",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic
-                  ),
-
-                ),            
-
-            ),
-
-        ),
-
-    );
-  }
-
-}*/
-
