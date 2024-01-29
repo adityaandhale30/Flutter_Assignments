@@ -24,7 +24,7 @@ class ColumnAxis extends StatelessWidget {
           backgroundColor:Color.fromARGB(255, 183, 217, 245),
         ),
 
-        body: Container(
+        body: SizedBox(
           // decoration: BoxDecoration(
             //  gradient:RadialGradient(colors: List.filled(1111111110, Colors.black)),
             //),
@@ -54,6 +54,8 @@ class ColumnAxis extends StatelessWidget {
                     height: 50,
                     width: 233,
                     color: Color.fromARGB(236, 253, 247, 247),
+
+                    
                     child: Image.network("https://i.pngimg.me/thumb/f/720/4573713097818112.jpg"),
                    // decoration:Gradient.radial(Center(heightFactor: sqrt1_2,), radius, colors),
                   ),
