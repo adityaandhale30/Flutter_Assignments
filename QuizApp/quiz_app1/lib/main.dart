@@ -60,6 +60,13 @@ class _QuizAppState extends State<QuizApp> {
     }
   ];
 
+  // red zcolour returning
+
+  Color retWrong() {
+    selectedIndex = questionList[_counter]["answer"];
+    return Colors.red;
+  }
+
   // Method That Returns Scaffold for Question And Celebration
 
   Scaffold screenScaffold() {
@@ -123,6 +130,14 @@ class _QuizAppState extends State<QuizApp> {
                     selectedIndex = 0;
                   });
                 },
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(selectedIndex == 0
+                          ? selectedIndex == questionList[_counter]["answer"]
+                              ? Colors.green
+                              :  retWrong()
+                          : Colors.lightBlue),
+                ),
 
                 // First Option of Question
 
@@ -138,18 +153,21 @@ class _QuizAppState extends State<QuizApp> {
             ),
             SizedBox(
               width: 300,
-              child: ElevatedButton(                                            // Elevated Button for 1st Option
+              child: ElevatedButton(
+                // Elevated Button for 1st Option
                 onPressed: () {
                   setState(() {
                     selectedIndex = 1;
                   });
                 },
-                style: ElevatedButton.styleFrom(
-
-                    (selectedIndex == questionList[_counter]["answer"]) ?  
-                      backgroundColor: Colors.green 
-                         
-                   :backgroundColor: Colors.red),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(selectedIndex == 1
+                          ? selectedIndex == questionList[_counter]["answer"]
+                              ? Colors.green
+                              : retWrong()
+                          : Colors.lightBlue),
+                ),
                 child: Text(
                   "B. ${questionList[_counter]["Option"][1]}",
                   style: const TextStyle(
@@ -168,6 +186,14 @@ class _QuizAppState extends State<QuizApp> {
                     selectedIndex = 2;
                   });
                 },
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(selectedIndex == 2
+                          ? selectedIndex == questionList[_counter]["answer"]
+                              ? Colors.green
+                              :  retWrong()
+                          : Colors.lightBlue),
+                ),
                 child: Text(
                   "C. ${questionList[_counter]["Option"][2]}",
                   style: const TextStyle(
@@ -186,7 +212,14 @@ class _QuizAppState extends State<QuizApp> {
                     selectedIndex = 3;
                   });
                 },
-                //style: ButtonStyle(),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(selectedIndex == 3
+                          ? selectedIndex == questionList[_counter]["answer"]
+                              ? Colors.green
+                              : retWrong()
+                          : Colors.lightBlue),
+                ),
                 child: Text(
                   "D. ${questionList[_counter]["Option"][3]}",
                   style: const TextStyle(
@@ -207,6 +240,7 @@ class _QuizAppState extends State<QuizApp> {
               } else {
                 _counter = 0;
               }
+              selectedIndex = -1;
             });
           },
           child: const Icon(Icons.arrow_forward),
