@@ -29,6 +29,8 @@ class _QuizAppState extends State<QuizApp> {
   int _counter = 0;
   int selectedIndex = -1;
   bool questionScrren = true;
+  bool checkAnswer = false;
+  int totalMarks = 0;
 
   // List of Questions And Options And Answers
 
@@ -62,9 +64,30 @@ class _QuizAppState extends State<QuizApp> {
 
   // red zcolour returning
 
-  Color retWrong() {
-    selectedIndex = questionList[_counter]["answer"];
-    return Colors.red;
+  Color? retColor(int n) {
+    if (selectedIndex == n) {
+      if (selectedIndex == n &&
+          selectedIndex == questionList[_counter]["answer"]) {
+        checkAnswer = true;
+        return Colors.green;
+      } else {
+        return Colors.red;
+      }
+    }
+    if (selectedIndex != -1 && n == questionList[_counter]["answer"]) {
+      return Colors.green;
+    }
+    return Colors.lightBlue;
+
+/*
+    return selectedIndex >= n
+        ? n == questionList[_counter]["answer"]
+            ? Colors.green
+            : selectedIndex == n
+                ? Colors.red
+                : Colors.lightBlue
+        : Colors.lightBlue;
+        */
   }
 
   // Method That Returns Scaffold for Question And Celebration
@@ -105,6 +128,13 @@ class _QuizAppState extends State<QuizApp> {
                   style: const TextStyle(
                       fontSize: 25, fontWeight: FontWeight.w600),
                 ),
+                SizedBox(
+                
+                  child: Text(
+                    "    Score : $totalMarks",
+                    style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
+                  ),
+                ),
               ],
             ),
             const SizedBox(
@@ -128,15 +158,14 @@ class _QuizAppState extends State<QuizApp> {
                 onPressed: () {
                   setState(() {
                     selectedIndex = 0;
+                    if (0 == questionList[_counter]["answer"]) {
+                      totalMarks += 1;
+                    }
                   });
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(selectedIndex == 0
-                          ? selectedIndex == questionList[_counter]["answer"]
-                              ? Colors.green
-                              :  retWrong()
-                          : Colors.lightBlue),
+                      MaterialStateProperty.all<Color?>(retColor(0)),
                 ),
 
                 // First Option of Question
@@ -158,15 +187,14 @@ class _QuizAppState extends State<QuizApp> {
                 onPressed: () {
                   setState(() {
                     selectedIndex = 1;
+                    if (1 == questionList[_counter]["answer"]) {
+                      totalMarks += 1;
+                    }
                   });
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(selectedIndex == 1
-                          ? selectedIndex == questionList[_counter]["answer"]
-                              ? Colors.green
-                              : retWrong()
-                          : Colors.lightBlue),
+                      MaterialStateProperty.all<Color?>(retColor(1)),
                 ),
                 child: Text(
                   "B. ${questionList[_counter]["Option"][1]}",
@@ -184,15 +212,14 @@ class _QuizAppState extends State<QuizApp> {
                 onPressed: () {
                   setState(() {
                     selectedIndex = 2;
+                    if (2 == questionList[_counter]["answer"]) {
+                      totalMarks += 1;
+                    }
                   });
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(selectedIndex == 2
-                          ? selectedIndex == questionList[_counter]["answer"]
-                              ? Colors.green
-                              :  retWrong()
-                          : Colors.lightBlue),
+                      MaterialStateProperty.all<Color?>(retColor(2)),
                 ),
                 child: Text(
                   "C. ${questionList[_counter]["Option"][2]}",
@@ -210,15 +237,14 @@ class _QuizAppState extends State<QuizApp> {
                 onPressed: () {
                   setState(() {
                     selectedIndex = 3;
+                    if (3 == questionList[_counter]["answer"]) {
+                      totalMarks += 1;
+                    }
                   });
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(selectedIndex == 3
-                          ? selectedIndex == questionList[_counter]["answer"]
-                              ? Colors.green
-                              : retWrong()
-                          : Colors.lightBlue),
+                      MaterialStateProperty.all<Color?>(retColor(3)),
                 ),
                 child: Text(
                   "D. ${questionList[_counter]["Option"][3]}",
@@ -239,11 +265,12 @@ class _QuizAppState extends State<QuizApp> {
                 _counter++;
               } else {
                 _counter = 0;
+                totalMarks = 0;
               }
               selectedIndex = -1;
             });
           },
-          child: const Icon(Icons.arrow_forward),
+          child: Text("$totalMarks"),
         ),
       );
     } else {
