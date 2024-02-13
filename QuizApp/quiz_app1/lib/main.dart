@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 //import 'package:quiz_app1/ListviewBuilder.dart';
-//import 'DispInt.dart';
+import 'quizAppWithModel.dart';
 
-void main() => runApp(const MainApp());
+void main() => runApp(const MyApp());
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
     );
   }
 }
-
+/*
 class QuizApp extends StatefulWidget {
   const QuizApp({super.key});
 
@@ -62,32 +62,30 @@ class _QuizAppState extends State<QuizApp> {
     }
   ];
 
-  // red zcolour returning
+  // red colour returning
+  // void increment() {
+  //   if (selectedIndex == questionList[_counter]["answer"]) {
+  //     totalMarks += 1;
+  //     setState(() {});
+  //   }
+  // }
 
   Color? retColor(int n) {
     if (selectedIndex == n) {
-      if (selectedIndex == n &&
-          selectedIndex == questionList[_counter]["answer"]) {
-        checkAnswer = true;
-        return Colors.green;
+      if (selectedIndex == questionList[_counter]["answer"]) {
+        //totalMarks += 1;
+        setState(() {
+          totalMarks++;
+        });
+        return const Color.fromARGB(255, 99, 235, 153);
       } else {
-        return Colors.red;
+        return const Color.fromARGB(255, 236, 138, 130);
       }
     }
     if (selectedIndex != -1 && n == questionList[_counter]["answer"]) {
-      return Colors.green;
+      return const Color.fromARGB(255, 104, 236, 109);
     }
-    return Colors.lightBlue;
-
-/*
-    return selectedIndex >= n
-        ? n == questionList[_counter]["answer"]
-            ? Colors.green
-            : selectedIndex == n
-                ? Colors.red
-                : Colors.lightBlue
-        : Colors.lightBlue;
-        */
+    return const Color.fromARGB(255, 124, 205, 243);
   }
 
   // Method That Returns Scaffold for Question And Celebration
@@ -129,10 +127,10 @@ class _QuizAppState extends State<QuizApp> {
                       fontSize: 25, fontWeight: FontWeight.w600),
                 ),
                 SizedBox(
-                
                   child: Text(
                     "    Score : $totalMarks",
-                    style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w600, fontSize: 25),
                   ),
                 ),
               ],
@@ -156,12 +154,12 @@ class _QuizAppState extends State<QuizApp> {
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    selectedIndex = 0;
-                    if (0 == questionList[_counter]["answer"]) {
-                      totalMarks += 1;
-                    }
-                  });
+                  if (selectedIndex == -1) {
+                    setState(() {
+                      selectedIndex = 0;
+                      // increment();
+                    });
+                  }
                 },
                 style: ButtonStyle(
                   backgroundColor:
@@ -185,12 +183,12 @@ class _QuizAppState extends State<QuizApp> {
               child: ElevatedButton(
                 // Elevated Button for 1st Option
                 onPressed: () {
-                  setState(() {
-                    selectedIndex = 1;
-                    if (1 == questionList[_counter]["answer"]) {
-                      totalMarks += 1;
-                    }
-                  });
+                  if (selectedIndex == -1) {
+                    setState(() {
+                      selectedIndex = 1;
+                      // increment();
+                    });
+                  }
                 },
                 style: ButtonStyle(
                   backgroundColor:
@@ -210,12 +208,12 @@ class _QuizAppState extends State<QuizApp> {
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    selectedIndex = 2;
-                    if (2 == questionList[_counter]["answer"]) {
-                      totalMarks += 1;
-                    }
-                  });
+                  if (selectedIndex == -1) {
+                    setState(() {
+                      selectedIndex = 2;
+                      //increment();
+                    });
+                  }
                 },
                 style: ButtonStyle(
                   backgroundColor:
@@ -235,12 +233,12 @@ class _QuizAppState extends State<QuizApp> {
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    selectedIndex = 3;
-                    if (3 == questionList[_counter]["answer"]) {
-                      totalMarks += 1;
-                    }
-                  });
+                  if (selectedIndex == -1) {
+                    setState(() {
+                      selectedIndex = 3;
+                      //increment();
+                    });
+                  }
                 },
                 style: ButtonStyle(
                   backgroundColor:
@@ -282,4 +280,4 @@ class _QuizAppState extends State<QuizApp> {
   Widget build(BuildContext context) {
     return screenScaffold();
   }
-}
+}*/
