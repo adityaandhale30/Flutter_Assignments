@@ -1,18 +1,5 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
-
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: QuizApp(),
-    );
-  }
-}
 
 class QuizApp extends StatefulWidget {
   const QuizApp({super.key});
@@ -42,28 +29,28 @@ class _QuizAppState extends State<QuizApp> {
 
   List questionList = [
     const QuestionModel(
-        question: " Who is Founder of Microsoft ?",
-        options: ["Larray Page ", "steve Jobs", "bill gates", "Jeff bezoz"],
+        question: " What develpoed Flutter ?",
+        options: ["Meta", "Oracale", "Google", "Microsoft"],
         answer: 2),
     const QuestionModel(
-      question: "Who is Founder of Apple ?",
-      options: ["Elon musk", "Bill Gates", "Mark Z", "Steve Jobs"],
+      question: "Which is Abstract Method in State class in Flutter?",
+      options: ["main()", "runApp()", "createState()", "build()"],
       answer: 3,
     ),
     const QuestionModel(
-      question: "Who Founder of tesla ? ",
-      options: ["Pranav Dumbre", "Steve Jobs", "Elon musk", "Harshad anbhule"],
-      answer: 2,
-    ),
-    const QuestionModel(
-      question: "Who is Founder of Meta  ?",
-      options: ["Mark Z", "Elon Musk", "Bill gates", "Larray page"],
+      question: " When Flutter was Developed ? ",
+      options: ["2016", "2013", "2015", "2011"],
       answer: 0,
     ),
     const QuestionModel(
-      question: "What is Harshad Anbhule's Pointer ?",
-      options: ["6.5", "7.0", "EFT Back", "9.7"],
-      answer: 2,
+      question: "What is Programming Language of Flutter ?",
+      options: ["Swift", "Dart", "Python", "Java"],
+      answer: 1,
+    ),
+    const QuestionModel(
+      question: "Which Widget in Flutter represent the Screen ?",
+      options: ["Scaffold", "Row", "SizedBox", "Center"],
+      answer: 0,
     )
   ];
 
@@ -101,7 +88,9 @@ class _QuizAppState extends State<QuizApp> {
         answerIndex == questionList[questionIndex].answer) {
       return const MaterialStatePropertyAll(Color.fromARGB(255, 66, 237, 40));
     }
-    return const MaterialStatePropertyAll(Color.fromARGB(255, 97, 200, 248));
+    return const MaterialStatePropertyAll(
+      Color.fromARGB(232, 80, 252, 252),
+    );
   }
 
   Scaffold screenScaffold() {
@@ -111,12 +100,16 @@ class _QuizAppState extends State<QuizApp> {
         appBar: AppBar(
           title: const Text(
             "QuizApp",
-            style: TextStyle(fontSize: 33, fontWeight: FontWeight.w800),
+            style: TextStyle(
+              fontSize: 33,
+              fontWeight: FontWeight.w800,
+            ),
           ),
           centerTitle: true,
-          backgroundColor: const Color.fromARGB(189, 234, 207, 122),
+          backgroundColor: const Color.fromARGB(232, 80, 252, 252),
           titleSpacing: 10,
         ),
+        backgroundColor: const Color.fromARGB(255, 205, 203, 203),
         body: Column(
           children: [
             const SizedBox(
@@ -160,9 +153,7 @@ class _QuizAppState extends State<QuizApp> {
                 ),
                 child: Text(
                   "A. ${questionList[questionIndex].options[0]}",
-                  style: const TextStyle(
-                    fontSize: 25,
-                  ),
+                  style: const TextStyle(fontSize: 25, color: Colors.black),
                 ),
               ),
             ),
@@ -183,9 +174,9 @@ class _QuizAppState extends State<QuizApp> {
                 child: Text(
                   "B. ${questionList[questionIndex].options[1]}",
                   style: const TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500,
-                  ),
+                      fontSize: 25,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black),
                 ),
               ),
             ),
@@ -208,6 +199,7 @@ class _QuizAppState extends State<QuizApp> {
                   style: const TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.w500,
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -231,6 +223,7 @@ class _QuizAppState extends State<QuizApp> {
                   style: const TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.w500,
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -247,10 +240,10 @@ class _QuizAppState extends State<QuizApp> {
     } else {
       return Scaffold(
         appBar: AppBar(
-         
           title: const Text(
             "Congractulaions",
-            style: TextStyle(fontSize: 45),textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 45, color: Colors.black),
+            textAlign: TextAlign.center,
           ),
           centerTitle: true,
         ),
@@ -259,17 +252,27 @@ class _QuizAppState extends State<QuizApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.network(
-                  "https://i.pinimg.com/736x/05/fb/88/05fb880f74340623475f48a5d3557984.jpg",height: 300,width: 400,),
+              if (totalMarks > 2)
+                Image.network(
+                  "https://i.pinimg.com/736x/05/fb/88/05fb880f74340623475f48a5d3557984.jpg",
+                  height: 300,
+                  width: 400,
+                ),
+              if (totalMarks <= 2)
+                Image.network(
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTubLZWdsLiqbbUCtOQvi02NNCxhB8LTDcDIsQ3jqvM2V0_5tKe-Q-yKCjNFA&s",
+                  height: 300,
+                  width: 400,
+                ),
               const SizedBox(
                 height: 15,
               ),
               Text(
                 "Total Score : $totalMarks",
                 style: const TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w500,
-                ),
+                    fontSize: 25,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black),
               ),
               const SizedBox(
                 height: 30,
@@ -284,12 +287,15 @@ class _QuizAppState extends State<QuizApp> {
                     quizScreen = true;
                     questionIndex = 0;
                     setState(() {});
-                  },style:const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color.fromARGB(255, 153, 203, 249))),
+                  },
+                  style: const ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(
+                          Color.fromARGB(255, 93, 197, 238))),
                   child: const Text(
                     "RESET",
                     style: TextStyle(
                       fontSize: 25,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w500,color: Colors.black
                     ),
                   ),
                 ),
