@@ -109,9 +109,11 @@ class _QuizAppState extends State<QuizApp> {
           backgroundColor: const Color.fromARGB(232, 80, 252, 252),
           titleSpacing: 10,
         ),
-        backgroundColor: const Color.fromARGB(255, 205, 203, 203),
+        backgroundColor:const  Color.fromARGB(255, 202, 200, 200),
         body: Column(
+         
           children: [
+           
             const SizedBox(
               height: 35,
             ),
@@ -133,7 +135,7 @@ class _QuizAppState extends State<QuizApp> {
             Text(
               "${questionList[questionIndex].question}",
               style: const TextStyle(
-                fontSize: 22.5,
+                fontSize: 25,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -277,6 +279,7 @@ class _QuizAppState extends State<QuizApp> {
               const SizedBox(
                 height: 30,
               ),
+              
               SizedBox(
                 width: 280,
                 height: 55,
