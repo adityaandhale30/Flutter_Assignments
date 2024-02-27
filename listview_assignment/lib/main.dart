@@ -98,7 +98,7 @@ class _ListViewDemoState extends State {
             },
             separatorBuilder: (BuildContext context, int index) {
               return const Text(
-                  "-------------------------------------------------------------------------");
+                  "-----------------------------------------------------------------------------------------------------------------------------------------------");
             },
             itemCount: formats.length));
   }
