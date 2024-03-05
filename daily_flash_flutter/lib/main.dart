@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dailyflash15.dart';
+import 'day2/dailyflash23.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: DailyFlash1(),
+      home: DailyFlash2(),
     );
   }
 }
