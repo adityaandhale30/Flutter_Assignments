@@ -35,3 +35,4 @@ class _DailyFlash1State extends State {
     );
   }
 }
+
