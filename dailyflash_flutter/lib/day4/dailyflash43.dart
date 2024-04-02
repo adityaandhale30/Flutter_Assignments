@@ -29,7 +29,7 @@ class _DailyFlash1State extends State {
                   ),
                   Text(
                     "Aditya",
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
+                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 25),
                   ),
                   SizedBox(
                     width: 30,
