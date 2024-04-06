@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'login.dart';
+
 class Starting extends StatefulWidget {
   const Starting({super.key});
   @override
@@ -67,7 +69,12 @@ class _StartingState extends State {
               height: 30,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Login()),
+                );
+              },
               child: Container(
                 width: 320,
                 height: 50,
@@ -75,6 +82,7 @@ class _StartingState extends State {
                   boxShadow: [
                     BoxShadow(
                       color: Color.fromRGBO(0, 0, 0, 0.15),
+                      blurRadius: 40,
                     ),
                   ],
                   borderRadius: BorderRadius.all(
