@@ -206,7 +206,8 @@ just sent you.""",
                     );
                   },
                   child: Container(
-                    width: 320,
+                    margin: const EdgeInsets.only( right: 10),
+                    width: double.maxFinite,
                     height: 50,
                     decoration: const BoxDecoration(
                       boxShadow: [
