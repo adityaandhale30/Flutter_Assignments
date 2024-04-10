@@ -83,16 +83,32 @@ favorite plants""",
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Container(
+                              margin: const EdgeInsets.only(left: 25),
+                              child: Text(
+                                "30% OFF $index",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
                             Text(
-                              "30% OFF $index",
+                              "02-23 April",
                               style: GoogleFonts.poppins(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
                                 color: Colors.black,
                               ),
                             ),
                           ],
                         ),
+                        
+                        const SizedBox(width: 35,),
+
+                        Image.asset("assets/plant4.png")
+
                       ],
                     ),
                   ),
@@ -130,43 +146,129 @@ favorite plants""",
             Expanded(
               child: ListView.separated(
                   itemBuilder: (context, i) {
-                    return Text(
-                      plantTypeList[i],
-                      style: GoogleFonts.poppins(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                      ),
+                    return Column(
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(left: 30),
+                              child: Text(
+                                plantTypeList[i],
+                                style: GoogleFonts.poppins(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 195,
+                          width: 420,
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: plantList.length,
+                              itemBuilder: (context, int i) {
+                                return Container(
+                                  margin: const EdgeInsets.all(20),
+                                  height: 195,
+                                  width: 141,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(15),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Color.fromRGBO(0, 0, 0, 0.06),
+                                        blurRadius: 18.1,
+                                        offset: Offset(0, 7.5),
+                                      )
+                                    ],
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Center(
+                                        child: Image.asset(
+                                          "assets/plant3.png",
+                                          height: 102,
+                                          width: 85,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 4,
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(left: 15),
+                                        child: Text(
+                                          plantList[i].plantName,
+                                          style: GoogleFonts.dmSans(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Container(
+                                            margin: const EdgeInsets.only(
+                                                bottom: 5),
+                                            child: Text(
+                                              "\u20B9 ${plantList[i].plantPrice}",
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 17,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: const Color.fromRGBO(
+                                                      62, 102, 24, 1)),
+                                            ),
+                                          ),
+                                          // IconButton(
+                                          //   onPressed: () {},
+                                          //   icon: const Icon(
+                                          //       Icons.shopping_bag_outlined),
+                                          // ),
+                                          GestureDetector(
+                                            child: Container(
+                                              height: 26,
+                                              margin: const EdgeInsets.only(
+                                                  left: 15, bottom: 2),
+                                              decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Color.fromRGBO(
+                                                    237, 238, 235, 1),
+                                              ),
+                                              //color: const Color.fromRGBO(237, 238, 235, 1),
+                                              child: const Icon(
+                                                  Icons.shopping_bag_outlined),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }),
+                        ),
+                      ],
                     );
                   },
                   separatorBuilder: (context, index) {
                     return Container(
-                      child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, i) {
-                            return Row(
-                              children: [
-                                Container(
-                                  height: 200,
-                                  width: 200,
-                                  child: Column(
-                                    children: [
-                                      Center(
-                                        child: Image.asset("assest/plant3.png"),
-                                      ),
-                                      Text(plantList[i].plantName),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                          separatorBuilder: (context, int i) {
-                            return const Text(
-                                "-----------------------------------------------------------------------------------------------------------");
-                          },
-                          itemCount: plantList.length),
+                      margin: const EdgeInsets.only(bottom: 20),
+                      child: const Text(
+                          "-------------------------------------------------------------------------------------------"),
                     );
+
+                    // Container(
+                    //     height: 200,
+                    //     width: 200,
+                    //     color: Colors.red,
+
+                    //    );
                   },
                   itemCount: plantTypeList.length),
             )
