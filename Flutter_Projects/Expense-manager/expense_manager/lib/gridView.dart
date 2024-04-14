@@ -17,15 +17,22 @@ class _GridDemoState extends State {
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 10,
         ),
         itemCount: 10,
         itemBuilder: (context, i) {
           return Container(
-           alignment: Alignment.center,
-            color: Colors.amber,
-            child: Text("{$i}+ 1"),
+            margin: EdgeInsets.only(left: 10,right: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(
+                25,
+              ),
+              color: Colors.lightBlueAccent,
+            ),
+            alignment: Alignment.center,
+            // color: Colors.amber,
+            child: Text("${i + 1}"),
           );
         },
       ),

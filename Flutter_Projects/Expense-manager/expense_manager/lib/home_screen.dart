@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 //import 'package:google_fonts/google_fonts.dart';
+import 'modelclass.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -9,11 +11,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State {
+  Color drawerbuttoncolor = Colors.white;
+  int _drawercolor = -1;
+  void changedrawerbuttoncolor(int i) {
+    _drawercolor = i;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.menu_outlined),
+        // leading: const Icon(Icons.menu_outlined),
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 15),
@@ -24,83 +32,231 @@ class _HomeState extends State {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {}),
+      body: ListView.separated(
+        itemCount: expenseModel.length + 1,
+        itemBuilder: (context, int i) {
+          return i != expenseModel.length
+              ? Container(
+                  margin: const EdgeInsets.only(right: 10, left: 10),
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(right: 22),
+                        height: 41,
+                        width: 41,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Image.asset(expenseModel[i].image),
+                      ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  expenseModel[i].type,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const Spacer(),
+                                GestureDetector(
+                                  child: const Icon(
+                                    Icons.remove_circle,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                                Container(
+                                  margin: const EdgeInsets.only(
+                                    left: 8,
+                                  ),
+                                  child: Text(
+                                    "${expenseModel[i].expense}",
+                                    style: GoogleFonts.poppins(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  expenseModel[i].description,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  expenseModel[i].date,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : Container();
+        },
+        separatorBuilder: (context, index) {
+          return const Text(
+            "     ------------------------------------------------------------------------------------------   ",
+            style: TextStyle(
+              color: Color.fromRGBO(206, 206, 206, 1),
+            ),
+          );
+        },
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      body: SingleChildScrollView(
+      floatingActionButton: Container(
+        margin: const EdgeInsets.only(bottom: 30),
+        height: 46,
+        width: 170,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(44),
+          color: Colors.red,
+          boxShadow: const [
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.25),
+              blurRadius: 4,
+              offset: Offset(0, 4),
+            ),
+          ],
+        ),
+        child: FloatingActionButton(
+          onPressed: () {},
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(67),
+          ),
+          backgroundColor: Colors.white,
+          child: Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(left: 5, right: 8),
+                // decoration: BoxDecoration(
+                //  // borderRadius: BorderRadius.circular(444),
+                // ),
+                child: const Icon(
+                  Icons.add_circle_rounded,
+                  color: Colors.green,
+                  size: 35,
+                ),
+              ),
+              Text(
+                "Add Transaction ",
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      drawer: Drawer(
+        width: 216,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: const EdgeInsets.only(right: 10),
-              child: Row(
-                children: [
-                  Container(
-                    // padding: const EdgeInsets.all(8),
-                    ////margin: const EdgeInsets.only(right: 15),
-                    height: 81,
-                    width: 81,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                    child: Image.asset("assets/medicine.png"),
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Row(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Medicine",
-                              style: GoogleFonts.poppins(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          const   Spacer(),
-                            GestureDetector(
-                              child: const Icon(
-                                Icons.remove_circle_outline,
-                              ),
-                            ),
-                            Text(
-                              "500",
-                              style: GoogleFonts.poppins(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Lorem Ipsum is simply dummy text of the ",
-                              style: GoogleFonts.poppins(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
-                              "3 June | 11:50 AM",
-                              style: GoogleFonts.poppins(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+              margin: const EdgeInsets.only(top: 30, left: 25),
+              child: Text(
+                "Expense manager",
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
+            // IconButton(
+            //   onPressed: () {
+            //     Navigator.of(context).pop();
+            //   },
+            //   icon: const Icon(Icons.close),
+            // ),
+            Container(
+              margin: const EdgeInsets.only(left: 25),
+              child: Text(
+                "Saves all your Transactions",
+                style: GoogleFonts.poppins(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, int i) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        changedrawerbuttoncolor(i);
+                      });
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 20, right: 40),
+                      height: 40,
+                      width: 14,
+                      decoration: BoxDecoration(
+                        color: _drawercolor == i
+                            ? Colors.white
+                            : const Color.fromRGBO(14, 161, 125, 0.15),
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: _drawercolor == i
+                                  ? Colors.white
+                                  : const Color.fromRGBO(14, 161, 125, 0.15),
+                              blurRadius: 1),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(left: 5, right: 8),
+                            child: const Icon(
+                              Icons.add_circle_rounded,
+                              color: Colors.green,
+                              size: 35,
+                            ),
+                          ),
+                          Text(
+                            "Add Transaction ",
+                            style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              color: _drawercolor != i
+                                  ? Colors.black
+                                  : const Color.fromRGBO(14, 161, 125, 0.15),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),

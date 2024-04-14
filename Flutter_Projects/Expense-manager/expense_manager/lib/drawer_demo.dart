@@ -22,22 +22,7 @@ class _DrawerDemoState extends State {
             width: 100,
             color: Colors.red,
           ),
-          Container(
-            height: 100,
-            width: 100,
-            color: Colors.red,
-          ),
-          Container(
-            height: 100,
-            width: 100,
-            color: Colors.red,
-          ),
-          // Container(
-          //   height: 100,
-          //   width: 100,
-          //   color: Colors.red,
-          // ),
-        ],
+        ]
       ),
       drawer: Drawer(
         child: Row(
