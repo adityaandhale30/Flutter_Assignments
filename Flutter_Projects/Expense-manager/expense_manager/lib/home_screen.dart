@@ -11,10 +11,96 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State {
+  //Variable and method for drawer color
   Color drawerbuttoncolor = Colors.white;
   int _drawercolor = -1;
   void changedrawerbuttoncolor(int i) {
     _drawercolor = i;
+  }
+
+  // Method For Drawer
+  Drawer drawermethod() {
+    return Drawer(
+      width: 216,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 35, left: 25),
+            child: Text(
+              "Expense manager",
+              style: GoogleFonts.poppins(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(left: 25),
+            child: Text(
+              "Saves all your Transactions",
+              style: GoogleFonts.poppins(
+                fontSize: 10,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: drawerbutton.length,
+              itemBuilder: (context, int i) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      changedrawerbuttoncolor(i);
+                    });
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(bottom: 20, right: 40),
+                    height: 40,
+                    width: 14,
+                    decoration: BoxDecoration(
+                      color: _drawercolor != i
+                          ? Colors.white
+                          : const Color.fromRGBO(14, 161, 125, 0.15),
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(20),
+                        bottomRight: Radius.circular(20),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                            color: _drawercolor != i
+                                ? Colors.white
+                                : const Color.fromRGBO(14, 161, 125, 0.15),
+                            blurRadius: 1),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(left: 12, right: 12),
+                          child: Image.asset(drawerbutton[i].buttonicon),
+                        ),
+                        Text(
+                          drawerbutton[i].buttonname,
+                          style: GoogleFonts.poppins(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: _drawercolor != i
+                                ? Colors.black
+                                : const Color.fromRGBO(14, 161, 125, 1),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          )
+        ],
+      ),
+    );
   }
 
   @override
@@ -149,9 +235,6 @@ class _HomeState extends State {
             children: [
               Container(
                 margin: const EdgeInsets.only(left: 5, right: 8),
-                // decoration: BoxDecoration(
-                //  // borderRadius: BorderRadius.circular(444),
-                // ),
                 child: const Icon(
                   Icons.add_circle_rounded,
                   color: Colors.green,
@@ -169,97 +252,7 @@ class _HomeState extends State {
           ),
         ),
       ),
-      drawer: Drawer(
-        width: 216,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(top: 30, left: 25),
-              child: Text(
-                "Expense manager",
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-            // IconButton(
-            //   onPressed: () {
-            //     Navigator.of(context).pop();
-            //   },
-            //   icon: const Icon(Icons.close),
-            // ),
-            Container(
-              margin: const EdgeInsets.only(left: 25),
-              child: Text(
-                "Saves all your Transactions",
-                style: GoogleFonts.poppins(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 5,
-                itemBuilder: (context, int i) {
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        changedrawerbuttoncolor(i);
-                      });
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 20, right: 40),
-                      height: 40,
-                      width: 14,
-                      decoration: BoxDecoration(
-                        color: _drawercolor == i
-                            ? Colors.white
-                            : const Color.fromRGBO(14, 161, 125, 0.15),
-                        borderRadius: const BorderRadius.only(
-                          topRight: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: _drawercolor == i
-                                  ? Colors.white
-                                  : const Color.fromRGBO(14, 161, 125, 0.15),
-                              blurRadius: 1),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(left: 5, right: 8),
-                            child: const Icon(
-                              Icons.add_circle_rounded,
-                              color: Colors.green,
-                              size: 35,
-                            ),
-                          ),
-                          Text(
-                            "Add Transaction ",
-                            style: GoogleFonts.poppins(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: _drawercolor != i
-                                  ? Colors.black
-                                  : const Color.fromRGBO(14, 161, 125, 0.15),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            )
-          ],
-        ),
-      ),
+      drawer:drawermethod(),
     );
   }
 }
