@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'WidApp.dart';
+
+import 'inheritedex.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,9 +11,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: WidApp(),
+    return const ShareData(
+      price: 100000,
+      productName: "Macbook Pro",
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: InheritedDemo(),
+      ),
     );
   }
 }
