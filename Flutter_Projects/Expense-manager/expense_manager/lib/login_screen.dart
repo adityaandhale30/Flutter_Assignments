@@ -1,4 +1,4 @@
-import 'package:expense_manager/register_screen.dart';
+  import 'package:expense_manager/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import 'package:google_fonts/google_fonts.dart';
@@ -103,8 +103,7 @@ class _LoginState extends State {
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         hintText: "password",
-                        //  errorBorder: OutlineInputBorder(
-                        // borderRadius: BorderRadius.circular(10)),
+                       
                         hintStyle: GoogleFonts.poppins(
                           color: const Color.fromRGBO(0, 0, 0, 0.6),
                           fontSize: 14,
