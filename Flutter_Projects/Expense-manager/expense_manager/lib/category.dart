@@ -9,6 +9,153 @@ class Category extends StatefulWidget {
 }
 
 class _CategoreyState extends State {
+// TextEditing controllers
+  TextEditingController urlController = TextEditingController();
+  TextEditingController catagoryController = TextEditingController();
+
+//key
+  final _formKey = GlobalKey<FormState>();
+
+  void showBottomSheet([toDoModelObj]) async {
+    showModalBottomSheet(
+        backgroundColor: const Color.fromRGBO(248, 248, 248, 1),
+        isScrollControlled: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30.0),
+            topRight: Radius.circular(30.0),
+          ),
+        ),
+        isDismissible: true,
+        context: context,
+        builder: (context) {
+          return Padding(
+            padding: EdgeInsets.only(
+              left: 20,
+              right: 20,
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        height: 100,
+                        width: 200,
+                      ),
+                      Text(
+                        "Image URL",
+                        style: GoogleFonts.quicksand(
+                          color: const Color.fromRGBO(33, 33, 33, 1),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 3,
+                      ),
+                      TextFormField(
+                        controller: urlController,
+                        decoration: InputDecoration(
+                          hintText: "Enter Title",
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                                color: Color.fromARGB(255, 38, 105, 125)),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.red),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      Text(
+                        "Description",
+                        style: GoogleFonts.quicksand(
+                          color: const Color.fromRGBO(33, 33, 33, 1),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 1,
+                      ),
+                      TextFormField(
+                        controller: catagoryController,
+                        maxLines: 1,
+                        decoration: InputDecoration(
+                          hintText: "Enter Category Name",
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 38, 105, 125),
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(color: Colors.red),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    height: 40,
+                    width: 123,
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(30)),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(67),
+                        ),
+                        backgroundColor: const Color.fromRGBO(14, 161, 125, 1),
+                      ),
+                      onPressed: () {
+                        //  submit(doedit, toDoModelObj);
+
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        "Add",
+                        style: GoogleFonts.inter(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+// BUILD Method------------------------------------------------------------------------------------------------------------------------
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +228,9 @@ class _CategoreyState extends State {
           ],
         ),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            showBottomSheet();
+          },
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(67),
           ),

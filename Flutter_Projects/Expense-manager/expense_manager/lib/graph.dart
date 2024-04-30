@@ -10,7 +10,6 @@ class Piegraph extends StatefulWidget {
 }
 
 class _PiegraphState extends State {
-  int _total = 2200;
   Map<String, double> data = {
     "Food": 650,
     "Fuel": 600,
