@@ -10,6 +10,23 @@ class QuizDemo extends StatefulWidget {
 }
 
 class _QuizState extends State {
+  // Method to return Color when we clicked any Option and variable
+  int selectedIndex = 0;
+  int iconvar = 0;
+
+  Color? retColor(int i) {
+    if (selectedIndex == i) {
+      if (selectedIndex == questionList[questionCounter].correctoption) {
+        iconvar = selectedIndex;
+        return const Color.fromRGBO(26, 181, 134, 1);
+      } else {
+        return const Color.fromRGBO(248, 145, 87, 1);
+      }
+    } else {
+      return const Color.fromRGBO(248, 145, 87, 1);
+    }
+  }
+
   // Question Counter
   int questionCounter = 0;
   @override
@@ -17,7 +34,7 @@ class _QuizState extends State {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
-        margin: const EdgeInsets.only(left: 30, right: 20),
+        margin: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -71,17 +88,21 @@ class _QuizState extends State {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                // selectedIndex = 1;
+                setState(() {
+                  selectedIndex = 1;
+                });
+              },
               child: Container(
                 margin: const EdgeInsets.only(top: 30),
                 height: 70,
                 width: 350,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: const Color.fromRGBO(248, 145, 87, 1),
+                  color: retColor(1),
                 ),
                 child: Row(
-                  //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(
@@ -89,7 +110,7 @@ class _QuizState extends State {
                       ),
                     ),
                     Text(
-                      "Option 1",
+                      "${questionList[questionCounter].option1}",
                       style: GoogleFonts.dmSans(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -109,17 +130,20 @@ class _QuizState extends State {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                setState(() {
+                  selectedIndex = 2;
+                });
+              },
               child: Container(
                 margin: const EdgeInsets.only(top: 20),
                 height: 70,
                 width: 350,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: const Color.fromRGBO(248, 145, 87, 1),
+                  color: retColor(2),
                 ),
                 child: Row(
-                  //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(
@@ -127,7 +151,7 @@ class _QuizState extends State {
                       ),
                     ),
                     Text(
-                      "Option 2",
+                      "${questionList[questionCounter].option2}",
                       style: GoogleFonts.dmSans(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -147,17 +171,20 @@ class _QuizState extends State {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                setState(() {
+                  selectedIndex = 3;
+                });
+              },
               child: Container(
                 margin: const EdgeInsets.only(top: 20),
                 height: 70,
                 width: 350,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: const Color.fromRGBO(248, 145, 87, 1),
+                  color: retColor(3),
                 ),
                 child: Row(
-                  //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(
@@ -165,7 +192,7 @@ class _QuizState extends State {
                       ),
                     ),
                     Text(
-                      "Option 3",
+                      "${questionList[questionCounter].option3}",
                       style: GoogleFonts.dmSans(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -185,17 +212,20 @@ class _QuizState extends State {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                setState(() {
+                  selectedIndex = 4;
+                });
+              },
               child: Container(
                 margin: const EdgeInsets.only(top: 20, bottom: 20),
                 height: 70,
                 width: 350,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: const Color.fromRGBO(248, 145, 87, 1),
+                  color: retColor(4),
                 ),
                 child: Row(
-                  //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(
@@ -203,7 +233,7 @@ class _QuizState extends State {
                       ),
                     ),
                     Text(
-                      "Option 4",
+                      "${questionList[questionCounter].option4}",
                       style: GoogleFonts.dmSans(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
