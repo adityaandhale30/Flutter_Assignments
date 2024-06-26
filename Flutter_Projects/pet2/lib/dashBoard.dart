@@ -411,26 +411,70 @@ communities! """,
           ),
         ),
       ),
-      bottomNavigationBar: NavigationBar(
-        animationDuration: Duration(seconds: 1),
-        destinations: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.bloodtype_outlined),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.bloodtype_outlined),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.bloodtype_outlined),
+      floatingActionButton: FloatingActionButton(onPressed: () {}),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 8.0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            buildTabItem(
+              icon: Icons.home,
+              label: 'Home',
+              isSelected: true,
+              onTap: () {},
+            ),
+            buildTabItem(
+              icon: Icons.favorite,
+              label: 'Service',
+              isSelected: false,
+              onTap: () {},
+            ),
+            SizedBox(width: 48), // The space for the floating action button
+            buildTabItem(
+              icon: Icons.history,
+              label: 'History',
+              isSelected: false,
+              onTap: () {},
+            ),
+            buildTabItem(
+              icon: Icons.person,
+              label: 'Profile',
+              isSelected: false,
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildTabItem({
+    required IconData icon,
+    required String label,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(icon, color: isSelected ? Colors.orange : Colors.grey),
+          Text(
+            label,
+            style: TextStyle(
+              color: isSelected ? Colors.orange : Colors.grey,
+            ),
           ),
         ],
       ),
     );
   }
 }
+
 
 
 /*import 'package:flutter/material.dart';
