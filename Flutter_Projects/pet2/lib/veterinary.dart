@@ -151,7 +151,7 @@ Doctor for Your Pet!""",
                 ),
               ],
             ),
-            Container(
+            SizedBox(
               height: 130,
               width: double.maxFinite,
               child: ListView.builder(
@@ -207,7 +207,7 @@ Doctor for Your Pet!""",
                       color: Colors.white,
                       boxShadow: const [
                         BoxShadow(
-                          color: Color.fromRGBO(22, 34, 51, 0.08),
+                          color: Color.fromRGBO(22, 34, 51, 0.803),
                           blurRadius: 16,
                           spreadRadius: -4,
                           offset: Offset(0, 8),
