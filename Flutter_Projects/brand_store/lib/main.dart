@@ -1,7 +1,6 @@
+import 'package:brand_store/View/details.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'View/onboarding.dart';
 
 void main() {
   runApp(const MainApp());
@@ -19,13 +18,12 @@ class MainApp extends StatelessWidget {
           displayLarge: GoogleFonts.imprima(
             color: const Color.fromRGBO(13, 13, 14, 1),
           ),
-          displaySmall:GoogleFonts.imprima(
-            color: const Color.fromRGBO(121, 119, 128, 1)
-          ), 
+          displaySmall: GoogleFonts.imprima(
+              color: const Color.fromRGBO(121, 119, 128, 1)),
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: OnBoarding(),
+      home: const Details(),
     );
   }
 }

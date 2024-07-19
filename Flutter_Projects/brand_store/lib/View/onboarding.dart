@@ -10,6 +10,7 @@ class OnBoarding extends StatefulWidget {
 class _OnBoardingState extends State<OnBoarding> {
   @override
   Widget build(BuildContext context) {
+    
     // defining Large & small text object so that we camn chage fontweight and fontsize and retain colors
     TextStyle displayLargeText = Theme.of(context).textTheme.displayLarge!;
     TextStyle displaySmallText = Theme.of(context).textTheme.displaySmall!;
